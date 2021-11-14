@@ -207,7 +207,7 @@ Modal
   place-items: center;
   transition: var(--transition);
   visibility: hidden;
-  z-index: -1;
+  z-index: 1;
 }
 /* OPEN/CLOSE MODAL */
 .show-modal {
@@ -316,7 +316,7 @@ Sidebar
   row-gap: 1rem;
   box-shadow: var(--clr-red-dark);
   transition: var(--transition);
-  transform: translate(-100%);
+  /* transform: translate(-100%); */
 }
 .show-sidebar {
   transform: translate(0);
