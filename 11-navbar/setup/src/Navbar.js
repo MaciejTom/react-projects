@@ -8,9 +8,58 @@ const Navbar = () => {
 
   const [toggleNav, setToggleNav] = useState(false);
 
-  useEffect(() => {
+  const linksContainerRef = useRef(null);
+  const linksRef = useRef(null);
 
-  },[])
+  
+
+  // useEffect(() => {
+  //  console.log("INSIDE OF USE EFFECT - toggleNav")
+
+  //   // const linksHeigth = linksRef.current.getBoundingClientRect().height
+
+  //   // if (toggleNav) {
+  //   //   linksContainerRef.current.style.height = `${linksHeigth}px`
+  //   // } else {
+  //   //   linksContainerRef.current.style.height = `0px`
+  //   // }
+    
+
+  //   // // window.addEventListener("resize", () => {
+  //   // //   const width = window.innerWidth;
+  //   // //   console.log(width)
+  //   // //   if (width > 800) {
+  //   // //     setToggleNav(false)
+  //   // //   }
+  //   // // })
+
+  // },[toggleNav])
+
+  useEffect(() => {
+  
+
+    const linksHeigth = linksRef.current.getBoundingClientRect().height
+    console.log(linksHeigth)
+    console.log(linksRef.current.style.height)
+    const linksHeigthContainer = linksContainerRef.current.getBoundingClientRect().height
+   
+
+    if (toggleNav) {
+      linksContainerRef.current.style.height = `${linksHeigth}px`
+    } else {
+      linksContainerRef.current.style.height = `0px`
+    }
+    
+
+    // window.addEventListener("resize", () => {
+    //   const width = window.innerWidth;
+    //   console.log(width)
+    //   if (width > 800) {
+    //     setToggleNav(false)
+    //   }
+    // })
+   
+  }, [toggleNav])
 
 
   return (
@@ -18,12 +67,12 @@ const Navbar = () => {
       <div className="nav-center">
         <div className="nav-header">
           <img src={logo} alt="logo" />
-          <button className="nav-toggle">
+          <button className="nav-toggle" onClick={() => setToggleNav(!toggleNav)}>
             <FaBars />
           </button>
         </div>
-        <div className="links-container show-container">
-          <ul className="links">
+        <div className="links-container" ref={linksContainerRef}>
+          <ul className="links" ref={linksRef}>
             {links.map(({id, url, text}) => 
             <li key={id}><a href={url}>{text}</a></li>)}
            
