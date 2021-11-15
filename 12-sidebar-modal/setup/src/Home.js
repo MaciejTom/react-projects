@@ -1,22 +1,19 @@
 import React, { useContext, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import Modal from "./Modal";
+import { AppContext } from "./context";
 
 const Home = () => {
 
-  const [isShowingModal, setIsShowingModal] = useState(false)
-
-  const showModal = () => {
-
-    console.log("asd")
-    setIsShowingModal(prev => !prev)
-  }
+  const {toggleModal, toggleSidebar} = useContext(AppContext)
+ 
+  
   return (
     <>
       <main className="main">
-        <div><button className="sidebar-toggle"><FaBars/></button></div>
+        <div><button className="sidebar-toggle" onClick={toggleSidebar}><FaBars/></button></div>
      
-        <button className="btn" onClick={()=> showModal()}>SHOW MODAL</button>
+        <button className="btn" onClick={toggleModal}>SHOW MODAL</button>
         
       </main>
     </>

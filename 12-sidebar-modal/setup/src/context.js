@@ -1,5 +1,32 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext } from "react";
 
-const modalContext = React.createContext
+const AppContext = React.createContext();
 
-export default modalContext
+const AppProvider = ({ children }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen((prev) => !prev);
+  };
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
+
+  return (
+    <AppContext.Provider
+
+    value={{
+      isModalOpen,
+      isSidebarOpen,
+      toggleModal,
+      toggleSidebar,
+    }}
+     
+    >
+      {children}
+    </AppContext.Provider>
+  );
+};
+
+export { AppContext, AppProvider };
