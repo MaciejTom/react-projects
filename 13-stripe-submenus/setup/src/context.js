@@ -6,9 +6,11 @@ const AppContext = React.createContext();
 export const AppProvider = ({ children }) => {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [location, setLocation] = useState({});
 
-  const openSubmenu = () => {
+  const openSubmenu = (text, coordinates) => {
     setIsSubmenuOpen(true);
+    setLocation(coordinates);
   };
   const closeSubmenu = () => {
     setIsSubmenuOpen(false);
@@ -29,9 +31,10 @@ export const AppProvider = ({ children }) => {
         closeSubmenu,
         openSidebar,
         closeSidebar,
+        location,
       }}
     >
-      { children }
+      {children}
     </AppContext.Provider>
   );
 };
