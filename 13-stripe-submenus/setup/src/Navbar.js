@@ -9,7 +9,7 @@ const Navbar = () => {
   const displaySubmenu = (e) => {
     const page = e.target.textContent
     const tempBtn = e.target.getBoundingClientRect()
-    console.log(tempBtn)
+   
     const center = (tempBtn.left + tempBtn.right)/2;
     const bottom = tempBtn.bottom - 3;
    
