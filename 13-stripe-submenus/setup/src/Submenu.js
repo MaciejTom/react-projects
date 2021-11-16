@@ -6,17 +6,10 @@ import links from "./data";
 const Submenu = () => {
  
   const { isSubmenuOpen, location, page: {page, links}} = useGlobalContext();
-  console.log(page)
+  
   const container = useRef(null);
 
   const [currentColumnLength, setCurrentColumnLength] = useState(3)
-  
-  // const currentColumnLength = links.map(el => {
-  //   if (el.page == submenuContext) {
-  //     return el.links.length
-  //   }
-  // })
-
   
 
   useEffect(() => {
@@ -25,16 +18,6 @@ const Submenu = () => {
     submenu.style.left = `${center}px`;
     submenu.style.top = `${bottom}px`;
 
-
-    // const currSub = sublinks.find(el => {
-    //   return el.page == submenuContext
-    // })
-    // console.log(currSub)
-    // setCurrentColumnLength(links.map(el => {
-    //   if (el.page == submenuContext) {
-    //     return el.links.length
-    //   }}))
-      console.log(currentColumnLength)
 
   }, [location]);
 

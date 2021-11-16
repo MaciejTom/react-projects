@@ -6,6 +6,14 @@ import { useGlobalContext } from "./context";
 const Navbar = () => {
   const { isSidebarOpen, openSidebar, openSubmenu, closeSubmenu } = useGlobalContext();
 
+  const handleSubmenu = (e) => {
+    // console.log(e.target)
+    if (!e.target.classList.contains("link-btn")) {
+      closeSubmenu()
+    }
+  }
+
+
   const displaySubmenu = (e) => {
     const page = e.target.textContent
     const tempBtn = e.target.getBoundingClientRect()
@@ -18,8 +26,8 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="nav">
-      <div className="nav-center">
+    <nav className="nav" onMouseOver={handleSubmenu} >
+      <div className="nav-center" >
         <div className="nav-header">
           <img src={logo} alt="logo" className="nav-logo" />
           <button className="toggle-btn btn" onClick={openSidebar}>
@@ -28,13 +36,13 @@ const Navbar = () => {
         </div>
         <ul className="nav-links">
           <li>
-            <button className="link-btn" onMouseOver={displaySubmenu} onMouseOut={closeSubmenu}>products</button>
+            <button className="link-btn" onMouseOver={displaySubmenu} >products</button>
           </li>
           <li>
-            <button className="link-btn" onMouseOver={displaySubmenu} onMouseOut={closeSubmenu}>developers</button>
+            <button className="link-btn" onMouseOver={displaySubmenu}>developers</button>
           </li>
           <li>
-            <button className="link-btn" onMouseOver={displaySubmenu} onMouseOut={closeSubmenu}>company</button>
+            <button className="link-btn" onMouseOver={displaySubmenu} >company</button>
           </li>
         </ul>
         <button className="btn signin-btn" >Sign In</button>
